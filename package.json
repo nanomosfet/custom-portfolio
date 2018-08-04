@@ -1,0 +1,76 @@
+{
+  "name": "custom-portfolio",
+  "version": "1.0.0",
+  "description": "This application creates a way for doctors to communicate with patients and vise versa.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "watch": "webpack --watch --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js",
+    "start": "webpack-dev-server --config webpack.dev.js --open"
+  },
+  "author": "Timothy Searcy",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^7.2.5",
+    "babel-core": "^6.26.0",
+    "babel-jest": "^23.0.1",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "css-loader": "^0.28.9",
+    "eslint": "^5.3.0",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^3.8.0",
+    "eslint-plugin-standard": "^3.1.0",
+    "html-webpack-plugin": "^3.2.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^23.1.0",
+    "mockdate": "^2.0.2",
+    "node-sass": "^4.7.2",
+    "postcss-loader": "^2.0.10",
+    "precss": "^3.1.0",
+    "react-test-renderer": "^16.4.0",
+    "regenerator-runtime": "^0.11.1",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.20.1",
+    "uglifyjs-webpack-plugin": "^1.1.8",
+    "url-loader": "^1.0.0",
+    "webpack": "^4.16.4",
+    "webpack-cli": "^3.1.0",
+    "webpack-merge": "^4.1.1"
+  },
+  "dependencies": {
+    "bootstrap": "^4.0.0",
+    "chart.js": "^1.1.1",
+    "jquery": "^3.3.1",
+    "moment": "^2.22.1",
+    "popper.js": "^1.12.9",
+    "react": "^16.2.0",
+    "react-chartjs": "^1.2.0",
+    "react-datepicker": "^1.4.1",
+    "react-dom": "^16.2.0",
+    "react-html-email": "^3.0.0",
+    "react-modal": "^3.4.5",
+    "react-select": "^1.2.1",
+    "react-spinners": "^0.3.2",
+    "webpack-dev-server": "^3.1.5"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js"
+    ],
+    "moduleNameMapper": {
+      "^.+\\.(css|less|scss)$": "identity-obj-proxy"
+    },
+    "moduleDirectories": [
+      "node_modules",
+      "src/render-component"
+    ],
+    "testURL": "http://localhost/"
+  }
+}
