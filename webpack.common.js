@@ -6,7 +6,7 @@ module.exports = {
   entry: './src/render-component.js',
   output: {
     filename: 'render-component.js',
-    path: path.resolve(__dirname, 'dist/')
+    path: path.resolve(__dirname, 'server/dist/')
   },
   node: { fs: 'empty' },
   module: {

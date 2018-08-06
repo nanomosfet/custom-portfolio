@@ -107,7 +107,7 @@ rules:
   no-extend-native: error
   no-extra-bind: error
   no-extra-label: error
-  no-extra-parens: error
+  no-extra-parens: off
   no-floating-decimal: error
   no-implicit-coercion: error
   no-implicit-globals: error
@@ -214,13 +214,16 @@ rules:
   require-await: error
   require-jsdoc: error
   require-unicode-regexp: 'off'
+  react/jsx-uses-vars: error
+  react/jsx-uses-react: error
+  react/react-in-jsx-scope: error
   rest-spread-spacing: error
   semi: 'off'
   semi-spacing: error
   semi-style:
     - error
     - last
-  sort-imports: error
+  sort-imports: 'off'
   sort-keys: 'off'
   sort-vars: error
   space-before-blocks: error
