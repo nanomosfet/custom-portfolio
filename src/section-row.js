@@ -2,9 +2,9 @@ import React from 'react';
 import Section from './section'
 
 
-const SectionRow = ({ styleOrder }) => (
+const SectionRow = ({ columns }) => (
   <div className="row">
-    {styleOrder.map((styleType, idx) => (<Section key={idx} styleType={styleType} />))}
+    {columns.map((column, idx) => (<Section key={idx} column={column} />))}
   </div>
 )
 

@@ -1,21 +1,21 @@
 import React from 'react'
-import routes from './routes'
 import Nav from './nav'
+import Page from './page'
 import NavDropdownLink from './nav-dropdown-link'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
-const RouteWithSubRoutes = (route) => (
+const RouteWithSubRoutes = ({ pageContent }) => (
   <Route
-    path={route.path}
-    exact={route.path === '/'}
-    render={(props) => (
+    path={pageContent.path}
+    exact={pageContent.path === '/'}
+    render={() => (
       // pass the sub-routes down to keep nesting
-      <route.component {...props} routes={route.routes} />
+      <Page pageContent={pageContent} />
     )}
   />
 );
 
-const App = () => (
+const App = ({ content }) => (
   <Router>
     <div className="container-fluid">
       <Nav>
@@ -25,11 +25,11 @@ const App = () => (
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
-            {routes.map((route, idx) => <NavDropdownLink key={idx} pathTo={route.path} activeOnlyWhenExact={route.path === '/'} label={route.label} />)}
+            {content.pages.map((pageContent, idx) => <NavDropdownLink key={idx} pathTo={pageContent.path} activeOnlyWhenExact={pageContent.path === '/'} label={pageContent.label} />)}
           </ul>
         </div>
       </Nav>
-      {routes.map((route, idx) => <RouteWithSubRoutes key={idx} {...route} />)}
+      {content.pages.map((pageContent, idx) => <RouteWithSubRoutes key={idx} pageContent={pageContent} />)}
     </div>
   </Router>
 )

@@ -7,6 +7,14 @@ const Headline = () => (
         <p className="lead font-weight-normal">
           Some thing really catchy for you goes here. Something silly most likely.
         </p>
+        <div>
+          <input type="text" placeholder="shit" className="h1 text-center" style={
+            {
+              background: 'transparent',
+              border: 'none'
+            }
+          }/>
+        </div>
         <a className="btn btn-outline-secondary" href="#">Resume Maybe</a>
       </div>
     </div>
