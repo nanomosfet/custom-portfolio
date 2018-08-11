@@ -13,14 +13,14 @@ const styleMap = {
   }
 }
 
-const Section = ({ style }) => (
+const Section = ({ styleType }) => (
     <div className="col-md">
-      <div className={ styleMap[style].box }>
+      <div className={ styleMap[styleType].box }>
         <h2>Section</h2>
         <p className="lead font-weight-normal">
           Some thing really catchy for you goes here. Something silly most likely.
         </p>
-        <div className={ styleMap[style].image } style={{ height: '300px' }}>
+        <div className={ styleMap[styleType].image } style={{ height: '300px' }}>
 
         </div>
       </div>

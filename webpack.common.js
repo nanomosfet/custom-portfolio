@@ -1,3 +1,6 @@
+/* global __dirname */
+/* eslint no-undef: "error" */
+
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');

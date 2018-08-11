@@ -4,7 +4,7 @@ import Section from './section'
 
 const SectionRow = ({ styleOrder }) => (
   <div className="row">
-    {styleOrder.map((style, idx) => (<Section key={idx} style={style} />))}
+    {styleOrder.map((styleType, idx) => (<Section key={idx} styleType={styleType} />))}
   </div>
 )
 
