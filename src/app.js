@@ -1,5 +1,7 @@
 import React from 'react'
 import routes from './routes'
+import Nav from './nav'
+import NavDropdownLink from './nav-dropdown-link'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 const RouteWithSubRoutes = (route) => (
@@ -16,31 +18,20 @@ const RouteWithSubRoutes = (route) => (
 const App = () => (
   <Router>
     <div className="container-fluid">
-      <div className="row">
-        <div className="col-md">
-          <nav className="navbar navbar-expand-lg navbar-light bg-light mt-2 mx-3 fixed-top">
-            <Link to="/" className="navbar-brand" >Brand</Link>
-            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span className="navbar-toggler-icon"></span>
-            </button>
-            <div className="collapse navbar-collapse" id="navbarNav">
-              <ul className="navbar-nav">
-                <li className="nav-item active">
-                  <Link to="/" className="nav-link" >Home <span className="sr-only">(current)</span></Link>
-                </li>
-                <li className="nav-item">
-                  <Link to="/about" className="nav-link" >About Me</Link>
-                </li>
-              </ul>
-            </div>
-          </nav>
+      <Nav>
+        <Link to="/" className="navbar-brand" >Brand</Link>
+        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav">
+            {routes.map((route, idx) => <NavDropdownLink key={idx} pathTo={route.path} activeOnlyWhenExact={route.path === '/'} label={route.label} />)}
+          </ul>
         </div>
-      </div>
-
+      </Nav>
       {routes.map((route, idx) => <RouteWithSubRoutes key={idx} {...route} />)}
     </div>
   </Router>
 )
 
  export default App
-
