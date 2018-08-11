@@ -4,6 +4,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   entry: './src/render-component.js',
@@ -32,7 +33,7 @@ module.exports = {
       {
         test: /\.(scss)$/,
         use: [{
-          loader: 'style-loader' // inject CSS to page
+          loader: MiniCssExtractPlugin.loader // inject CSS to page
         }, {
           loader: 'css-loader' // translates CSS into CommonJS modules
         }, {
@@ -72,6 +73,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html',
       inject: 'body'
+    }),
+    new MiniCssExtractPlugin({
+      filename: "[name].css",
+      chunkFilename: "[id].css"
     })
 
   ]

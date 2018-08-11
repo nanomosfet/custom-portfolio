@@ -17,11 +17,11 @@ const content = {
               items: [
                 {
                   itemType: 'header',
-                  text: 'Headline'
+                  text: 'Jessica Calderon'
                 },
                 {
                   itemType: 'leadText',
-                  text: 'Something really catchy for you goes here. Something Silly most likely.'
+                  text: 'Jessica really cool yeah.'
                 },
                 {
                   itemType: 'pdfDownloadButton',
@@ -195,6 +195,33 @@ const content = {
     {
       path: '/contact',
       label: 'Contact',
+      rows: [
+        {
+          cols: [
+            {
+              styleType: 'darkMain',
+              items: [
+                {
+                  itemType: 'header',
+                  text: 'Contact'
+                },
+                {
+                  itemType: 'leadText',
+                  text: 'Something really interesting with content.'
+                },
+                {
+                  itemType: 'image',
+                  source: 'somePath'
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      path: '/jessica',
+      label: 'Jessica',
       rows: [
         {
           cols: [

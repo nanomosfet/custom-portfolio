@@ -15,7 +15,7 @@ const Headline = () => (
             }
           }/>
         </div>
-        <a className="btn btn-outline-secondary" href="#">Resume Maybe</a>
+        <a className="btn" href="#">Resume Maybe</a>
       </div>
     </div>
   </div>
