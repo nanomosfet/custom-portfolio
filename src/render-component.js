@@ -111,8 +111,8 @@ const content = {
       ]
     },
     {
-      path: '/about',
-      label: 'About',
+      path: '/aboutme',
+      label: 'About Me',
       rows: [
         {
           cols: [
@@ -195,33 +195,6 @@ const content = {
     {
       path: '/contact',
       label: 'Contact',
-      rows: [
-        {
-          cols: [
-            {
-              styleType: 'darkMain',
-              items: [
-                {
-                  itemType: 'header',
-                  text: 'Contact'
-                },
-                {
-                  itemType: 'leadText',
-                  text: 'Something really interesting with content.'
-                },
-                {
-                  itemType: 'image',
-                  source: 'somePath'
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      path: '/jessica',
-      label: 'Jessica',
       rows: [
         {
           cols: [
