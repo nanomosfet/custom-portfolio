@@ -2,7 +2,7 @@ import React from 'react'
 import Nav from './nav'
 import Page from './page'
 import NavDropdownLink from './nav-dropdown-link'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 
 const RouteWithSubRoutes = ({ pageContent }) => (
   <Route
@@ -22,7 +22,6 @@ const ToggleButton = () => (
 )
 
 const App = ({ content }) => (
-  <Router>
     <div className="container-fluid">
       <Nav>
         <Link to="/" className="navbar-brand" >Brand</Link>
@@ -35,7 +34,6 @@ const App = ({ content }) => (
       </Nav>
       {content.pages.map((pageContent, idx) => <RouteWithSubRoutes key={idx} pageContent={pageContent} />)}
     </div>
-  </Router>
 )
 
  export default App
