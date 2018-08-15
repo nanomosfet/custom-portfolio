@@ -7,9 +7,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  entry: './src/render-component.js',
+  entry: './src/editablePortfolio.js',
   output: {
-    filename: 'render-component.js',
+    filename: 'bundle.js',
     path: path.resolve(__dirname, 'server/dist/')
   },
   node: { fs: 'empty' },

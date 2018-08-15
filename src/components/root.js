@@ -1,14 +1,12 @@
 import React from 'React'
 import { Provider } from 'react-redux'
-import { BrowserRouter as Router } from 'react-router-dom'
-import App from './app'
-import initialContent from './initial-content'
+
+import Portfolio from '../containers/portfolio'
+
 
 const Root = ({ store }) => (
   <Provider store={store}>
-    <Router>
-      <App content={initialContent} />
-    </Router>
+      <Portfolio />
   </Provider>
 )
 

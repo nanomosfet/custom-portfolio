@@ -4,8 +4,8 @@ import 'bootstrap'
 import Root from './components/root'
 import './main.scss'
 import { createStore } from 'redux'
-
-const portfolio = (state, action) => {
+import initialContent from './components/initial-content'
+const portfolio = (state = initialContent, action) => {
   return state
 }
 
