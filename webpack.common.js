@@ -7,9 +7,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  entry: './src/editablePortfolio.js',
+  entry: {
+    editable: './src/editable-portfolio.js',
+    static: './src/portfolio.js'
+  },
   output: {
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'server/dist/')
   },
   node: { fs: 'empty' },
@@ -72,7 +75,15 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: './src/index.html',
-      inject: 'body'
+      inject: 'body',
+      chunks: ['editable'],
+      filename: 'editable.html'
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+      inject: 'body',
+      chunks: ['static'],
+      filename: 'static.html'
     }),
     new MiniCssExtractPlugin({
       filename: "[name].css",

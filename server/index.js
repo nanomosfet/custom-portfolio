@@ -25,6 +25,7 @@ passport.deserializeUser((user, done) => {
 });
 
 const ensureAuthenticated = (req, res, next) => {
+  return next()
   if (req.isAuthenticated()) {
     return next()
   }
@@ -33,6 +34,7 @@ const ensureAuthenticated = (req, res, next) => {
 }
 
 app.use(express.static('server/dist'))
+app.use('/edit',express.static('server/dist'))
 app.use(session({ secret: 'cats' }))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(passport.initialize())
@@ -40,21 +42,21 @@ app.use(passport.session())
 
 app.get('/api', (req, res) => res.json({ somthing: 'hello' }))
 app.get('/login', (req, res) => res.sendFile(path.join(__dirname, '/dist/login.html')))
-app.post('/login', passport.authenticate('local', { successRedirect: '/secret',
+app.post('/login', passport.authenticate('local', { successRedirect: '/edit',
                                                     failureRedirect: '/login' }))
 app.get('/logout', (req, res) => {
   req.logout()
   res.redirect('/')
 })
 app.get(
-  '/secret',
+  '/edit',
   ensureAuthenticated,
-  (req, res) => res.json({ secret: 'cat' })
+  (req, res) => res.sendFile(path.join(__dirname, '/dist/editable.html'))
 )
 app.get(
-  '/secret/*',
+  '/edit/*',
   ensureAuthenticated,
-  (req, res) => res.json({ secret: 'cat' })
+  (req, res) => res.sendFile(path.join(__dirname, '/dist/editable.html'))
 )
-app.get('/*', (req, res) => res.sendFile(path.join(__dirname, '/dist/index.html')))
+app.get('/*', (req, res) => res.sendFile(path.join(__dirname, '/dist/static.html')))
 app.listen(3000, () => console.log('Example app listening on port 3000!'))

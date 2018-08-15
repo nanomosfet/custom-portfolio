@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 const RouteWithSubRoutes = ({ pageContent }) => (
   <Route
     path={pageContent.path}
-    exact={pageContent.path === '/'}
+    exact={true}
     render={() => (
       // pass the sub-routes down to keep nesting
       <Page pageContent={pageContent} />
@@ -25,7 +25,7 @@ const App = ({ content }) => (
   <Router>
     <div className="container-fluid">
       <Nav>
-        <Link to="/" className="navbar-brand" >Brand</Link>
+        <Link to={content.pages[0].path} className="navbar-brand" >Brand</Link>
         <ToggleButton />
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
