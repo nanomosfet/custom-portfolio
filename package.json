@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "watch": "webpack --watch --config webpack.dev.js",
+    "watch": "webpack-dev-server --config webpack.dev.js --open",
     "build": "webpack --config webpack.prod.js",
-    "start-dev": "npm-run-all --parallel dev-server watch",
+    "start:dev": "npm-run-all --parallel dev-server watch",
     "start": "run-s build prod-server",
     "dev-server": "nodemon server",
     "prod-server": "node server"
