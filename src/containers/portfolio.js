@@ -1,10 +1,10 @@
 import { connect } from 'react-redux'
 
-import App from '../components/app.js'
+import EditableApp from '../components/editable-app.js'
 
 
 const mapStateToProps = (state) => ({ content: state })
-const Portfolio = connect(mapStateToProps)(App)
+const Portfolio = connect(mapStateToProps)(EditableApp)
 
 export default Portfolio
 

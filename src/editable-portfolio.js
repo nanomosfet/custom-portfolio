@@ -7,7 +7,21 @@ import { createStore } from 'redux'
 import initialContent from './components/initial-content'
 import convertToEdit from './helpers/convert-to-edit'
 const portfolio = (state = convertToEdit(initialContent), action) => {
-  return state
+  switch (action.type) {
+    case 'ADD_PAGE':
+      return {
+        pages: [
+          ...state.pages,
+          {
+            path: `/edit/${action.pageName}`,
+            label: action.pageName,
+            rows: []
+          }
+        ]
+      }
+    default:
+      return state
+  }
 }
 
 const store = createStore(portfolio)
