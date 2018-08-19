@@ -12,11 +12,11 @@ const initialContent = {
               items: [
                 {
                   itemType: 'header',
-                  text: 'Jessica Calderon'
+                  text: 'Header'
                 },
                 {
                   itemType: 'leadText',
-                  text: 'Jessica really cool yeah.'
+                  text: 'Really cool lead text that people pay attention too.'
                 },
                 {
                   itemType: 'pdfDownloadButton',

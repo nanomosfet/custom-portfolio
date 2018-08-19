@@ -44,11 +44,11 @@ const EditNavDropdownLink = ({ idx, pathTo, activeOnlyWhenExact, label, dispatch
 
         </Link>
         <span
-          className="nav-link"
+          className="nav-link text-danger close"
           style={{ display: 'inline-block' }}
           onClick={() => {
             dispatch(deletePage(idx, isHome))
-          }}>x</span>
+          }}>&times;</span>
       </li>
 
     )}
