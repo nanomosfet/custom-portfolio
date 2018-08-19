@@ -14,7 +14,7 @@ const AddRowButton = ({ dispatch, pageIndex }) => {
           type="button"
           className="btn btn-success btn-lg btn-block my-2"
           onClick={() => (dispatch(addRow(pageIndex)))}>
-          Add Page
+          Add Row
         </button>
       </div>
     </div>
