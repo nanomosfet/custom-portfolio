@@ -3,6 +3,7 @@ const initialContent = {
     {
       path: '/',
       label: 'Home',
+      isHome: true,
       rows: [
         {
           cols: [

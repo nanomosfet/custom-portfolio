@@ -25,7 +25,7 @@ const portfolio = (state = convertToEdit(initialContent), action) => {
         pages: [
           ...state.pages.map((page, idx) =>
             (idx === action.key)                                              
-              ? {...page, label: action.value, path: `/edit/${action.value.replace(/\W/g, '').toLowerCase()}`}
+              ? {...page, label: action.value, path: (action.isHome) ? page.path : `/edit/${action.value.replace(/\W/g, '').toLowerCase()}`}
               : page)
         ]
       })

@@ -30,7 +30,7 @@ const EditableApp = ({ content }) => (
         <ToggleButton />
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
-            {content.pages.map((pageContent, idx) => <EditNavDropdownLink idx={idx} key={idx} pathTo={pageContent.path} activeOnlyWhenExact={pageContent.path === '/'} label={pageContent.label} />)}
+            {content.pages.map((pageContent, idx) => <EditNavDropdownLink isHome={pageContent.isHome}idx={idx} key={idx} pathTo={pageContent.path} activeOnlyWhenExact={pageContent.path === '/'} label={pageContent.label} />)}
             <AddPageButton />
           </ul>
         </div>

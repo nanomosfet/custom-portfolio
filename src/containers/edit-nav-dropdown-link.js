@@ -1,14 +1,15 @@
 import React from 'react'
 import { Route, Link } from 'react-router-dom';
 import { connect } from 'react-redux'
-const editPage = (newVal, index) => ({
+const editPage = (newVal, index, isHome) => ({
   type: 'EDIT_PAGE',
   value: newVal,
-  key: index
+  key: index,
+  isHome: isHome
 })
 
 
-const EditNavDropdownLink = ({ idx, pathTo, activeOnlyWhenExact, label, dispatch }) => (
+const EditNavDropdownLink = ({ idx, pathTo, activeOnlyWhenExact, label, dispatch, isHome }) => (
   <Route
     path={pathTo}
     exact={activeOnlyWhenExact}
@@ -21,8 +22,10 @@ const EditNavDropdownLink = ({ idx, pathTo, activeOnlyWhenExact, label, dispatch
             value={label}
             onChange={
               (event) => {
-                history.push(`/edit/${event.target.value.replace(/\W/g, '').toLowerCase()}`)
-                dispatch(editPage(event.target.value, idx))
+                if (!isHome) {
+                  history.push(`/edit/${event.target.value.replace(/\W/g, '').toLowerCase()}`)  
+                }
+                dispatch(editPage(event.target.value, idx, isHome))
               }
             }
             size={label.length}
