@@ -72,6 +72,7 @@
     "react-router-dom": "^4.3.1",
     "react-select": "^1.2.1",
     "react-spinners": "^0.3.2",
+    "reduce-reducers": "^0.4.3",
     "redux": "^4.0.0",
     "webpack-dev-server": "^3.1.5"
   },
