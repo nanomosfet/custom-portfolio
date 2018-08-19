@@ -14,11 +14,22 @@ const portfolio = (state = convertToEdit(initialContent), action) => {
           ...state.pages,
           {
             path: `/edit/${action.pageName}`,
-            label: action.pageName,
+            label: action.pageName.toString(),
             rows: []
           }
         ]
       }
+    case 'EDIT_PAGE':
+      return (
+       {
+        pages: [
+          ...state.pages.map((page, idx) =>
+            (idx === action.key)                                              
+              ? {...page, label: action.value, path: `/edit/${action.value.replace(/\W/g, '').toLowerCase()}`}
+              : page)
+        ]
+      })
+      
     default:
       return state
   }

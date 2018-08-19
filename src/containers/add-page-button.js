@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 let pageNum = 0
 const addPage = () => ({
   type: 'ADD_PAGE',
-  pageName: pageNum++
+  pageName: `newpage${pageNum++}`
 })
 
 const AddPageButton = ({ dispatch }) => {

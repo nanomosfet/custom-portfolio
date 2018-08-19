@@ -1,7 +1,7 @@
 import React from 'react'
 import Nav from './nav'
 import Page from './page'
-import NavDropdownLink from './nav-dropdown-link'
+import EditNavDropdownLink from '../containers/edit-nav-dropdown-link'
 import AddPageButton from '../containers/add-page-button'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
@@ -22,7 +22,7 @@ const ToggleButton = () => (
   </button>
 )
 
-const App = ({ content }) => (
+const EditableApp = ({ content }) => (
   <Router>
     <div className="container-fluid">
       <Nav>
@@ -30,7 +30,7 @@ const App = ({ content }) => (
         <ToggleButton />
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
-            {content.pages.map((pageContent, idx) => <NavDropdownLink key={idx} pathTo={pageContent.path} activeOnlyWhenExact={pageContent.path === '/'} label={pageContent.label} />)}
+            {content.pages.map((pageContent, idx) => <EditNavDropdownLink idx={idx} key={idx} pathTo={pageContent.path} activeOnlyWhenExact={pageContent.path === '/'} label={pageContent.label} />)}
             <AddPageButton />
           </ul>
         </div>
@@ -40,4 +40,4 @@ const App = ({ content }) => (
   </Router>
 )
 
- export default App
+ export default EditableApp
