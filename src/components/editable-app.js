@@ -1,6 +1,6 @@
 import React from 'react'
 import Nav from './nav'
-import Page from './page'
+import EditablePage from './editable-page'
 import EditNavDropdownLink from '../containers/edit-nav-dropdown-link'
 import AddPageButton from '../containers/add-page-button'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
@@ -11,7 +11,7 @@ const RouteWithSubRoutes = ({ pageContent, pageIndex }) => (
     exact={true}
     render={() => (
       // pass the sub-routes down to keep nesting
-      <Page pageContent={pageContent} pageIndex={pageIndex}/>
+      <EditablePage pageContent={pageContent} pageIndex={pageIndex}/>
     )}
   />
 );
