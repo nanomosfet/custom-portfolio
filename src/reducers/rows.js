@@ -1,3 +1,5 @@
+/* eslint no-magic-numbers: ["error", { "ignore": [1] }] */
+
 let newState = {}
 
 const rows = (state, action) => {
@@ -28,6 +30,11 @@ const rows = (state, action) => {
         })
 
       return (newState)
+    case 'DELETE_ROW':
+      newState = { ...state }
+      newState.pages[action.pageIndex].rows.splice(action.rowIndex, 1)
+
+      return newState
     default:
       return state
   }

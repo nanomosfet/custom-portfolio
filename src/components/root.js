@@ -6,8 +6,7 @@ import Portfolio from '../containers/portfolio'
 
 const Root = ({ store }) => (
   <Provider store={store}>
-  
-      <Portfolio />
+    <Portfolio />
   </Provider>
 )
 

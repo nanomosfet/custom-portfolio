@@ -1,5 +1,5 @@
 import React from 'react'
-import SectionRow from './section-row'
+import EditableSectionRow from './editable-section-row'
 import AddRowButton from './../containers/add-row-button'
 
 export default class EditablePage extends React.Component {
@@ -8,7 +8,7 @@ export default class EditablePage extends React.Component {
 
     return (
       <div className="mt-6">
-        {pageContent.rows.map((row, idx) => (<SectionRow key={idx} columns={row.cols} />))}
+        {pageContent.rows.map((row, idx) => (<EditableSectionRow pageIndex={pageIndex} rowIndex={idx} key={idx} columns={row.cols} />))}
         <AddRowButton pageIndex={pageIndex}/>
       </div>
     )
