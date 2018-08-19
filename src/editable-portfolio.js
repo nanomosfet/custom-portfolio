@@ -29,6 +29,12 @@ const portfolio = (state = convertToEdit(initialContent), action) => {
               : page)
         ]
       })
+    case 'DELETE_PAGE':
+      return ({
+          pages: [
+            ...state.pages.filter((page, idx) => (idx !== action.key || action.isHome))
+          ]
+      })
       
     default:
       return state

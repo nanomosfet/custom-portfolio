@@ -8,6 +8,12 @@ const editPage = (newVal, index, isHome) => ({
   isHome: isHome
 })
 
+const deletePage = (index, isHome) => ({
+  type: 'DELETE_PAGE',
+  key: index,
+  isHome: isHome
+})
+
 
 const EditNavDropdownLink = ({ idx, pathTo, activeOnlyWhenExact, label, dispatch, isHome }) => (
   <Route
@@ -32,10 +38,19 @@ const EditNavDropdownLink = ({ idx, pathTo, activeOnlyWhenExact, label, dispatch
             style={{
               background: 'transparent',
               border: 'none',
-              textAlign: 'center'
+              textAlign: 'center',
+              display: 'inline-block'
             }} />
+
         </Link>
+        <span
+          className="nav-link"
+          style={{ display: 'inline-block' }}
+          onClick={() => {
+            dispatch(deletePage(idx, isHome))
+          }}>x</span>
       </li>
+
     )}
   />
 )
