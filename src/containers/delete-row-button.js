@@ -11,7 +11,7 @@ const DeleteRowButton = ({ dispatch, pageIndex, rowIndex }) => {
   return (
         <button
           type="button"
-          className="close text-danger position-absolute m-4"
+          className="close text-danger position-absolute  ml-4 mt-2"
           onClick={() => (dispatch(deleteRow(pageIndex, rowIndex)))}>
           <span aria-hidden="true">&times;</span>
         </button>)

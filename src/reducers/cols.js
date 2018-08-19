@@ -25,7 +25,6 @@ const cols = (state, action) => {
     case 'SET_COLUMNS':
       curNumCols = state.pages[action.pageIndex].rows[action.rowIndex].cols.length
       newState = { ...state }
-      console.log(action.numCols > curNumCols)
       if (action.numCols > curNumCols) {
         for (let idx = curNumCols; idx < action.numCols; idx++) {
           newState.pages[action.pageIndex].rows[action.rowIndex].cols.push(defaultColContent)

@@ -15,7 +15,7 @@ const NumColsDropdown = ({ dispatch, pageIndex, rowIndex, curNumCols }) => {
   }
 
   return (
-    <div className="btn-group dropleft position-absolute m-4" style={{ right: '0' }}>
+    <div className="btn-group dropleft position-absolute mr-4 mt-3" style={{ right: '0' }}>
       <button className="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Columns: {curNumCols}
       </button>
