@@ -1,6 +1,6 @@
 const baseImage = 'w-75 rounded-top mx-auto'
-const baseBox = 'mt-2 px-4 pt-2 text-center'
-const baseBoxMain = 'my-2 p-5  text-center'
+const baseBox = 'mt-2 px-4 pt-2 text-center h-100'
+const baseBoxMain = 'my-2 p-5  text-center h-100'
 const styleMap = {
   dark: {
     image: `${baseImage} bg-light`,
