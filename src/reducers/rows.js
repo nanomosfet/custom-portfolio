@@ -1,11 +1,11 @@
 /* eslint no-magic-numbers: ["error", { "ignore": [1] }] */
-
+import deepCopy from '../helpers/deep-copy'
 let newState = {}
 
 const rows = (state, action) => {
   switch (action.type) {
     case 'ADD_ROW':
-      newState = { ...state }
+      newState = deepCopy(state)
       newState.pages[action.pageIndex].rows.push({
           cols: [
             {
@@ -31,7 +31,7 @@ const rows = (state, action) => {
 
       return (newState)
     case 'DELETE_ROW':
-      newState = { ...state }
+      newState = deepCopy(state)
       newState.pages[action.pageIndex].rows.splice(action.rowIndex, 1)
 
       return newState
