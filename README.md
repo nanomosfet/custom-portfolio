@@ -1,14 +1,17 @@
-# custom-react-pipeline
+# Customizable portfolio
 
-Basic Prod and Dev build pipeline for react
+Node version : 8
+
+Provides a way for someone to update their portfolio page. Pretty much like squarespace or adobe portfolio.
+
+Built with React for the front end and express for the backend.
 
 ## Includes:
 
-1. Webpack configed to used for bundling an exported library
-2. Start up script for dev `npm run watch`
-3. Start up script for prod `npm run build`
-4. Configured to use SASS
-5. Can import small image files for url encoding
+1. Webpack - Javascript bundler
+2. Babel 6
+3. configured eslint.
+4. more
 
 ## Initialize
 
@@ -16,14 +19,16 @@ Basic Prod and Dev build pipeline for react
 npm install
 ```
 
-```
-npm run build
-```
-
-open dist/index.html in a web browser
-
-## Test it
+## Start dev server
 
 ```
-npm test
+npm run start:dev
 ```
+
+## Start prod server
+
+```
+npm start
+```
+
+go to /edit to edit your portfolio
