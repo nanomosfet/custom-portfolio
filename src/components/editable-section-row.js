@@ -1,13 +1,13 @@
 import React from 'react';
-import EditableSection from './editable-section'
+import Column from './../containers/column'
 import DeleteRowButton from './../containers/delete-row-button.js'
-import NumColsDropdown from './../containers/num-cols-dropdown.js'
+import AddColumnButton from './../containers/add-column-button.js'
 
-const EditableSectionRow = ({ columns, pageIndex, rowIndex }) => (
+const EditableSectionRow = ({ columns, page, row }) => (
   <div className="row row-eq-height">
-    {columns.map((column, idx) => (<EditableSection pageIndex={pageIndex} rowIndex={rowIndex} colIndex={idx} key={idx} column={column} />))}
-    <DeleteRowButton pageIndex={pageIndex} rowIndex={rowIndex} />
-    <NumColsDropdown pageIndex={pageIndex} rowIndex={rowIndex} curNumCols={columns.length}/>
+    {columns.map((columnId) => (<Column key={columnId} columnId={columnId} rowId={row} />))}
+    <DeleteRowButton page={page} row={row} />
+    <AddColumnButton rowId={row} />
   </div>
 )
 

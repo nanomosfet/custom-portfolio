@@ -1,12 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-const setColumns = (pageIndex, rowIndex, numCols) => ({
-  type: 'SET_COLUMNS',
-  pageIndex: pageIndex,
-  rowIndex: rowIndex,
-  numCols: numCols
-})
+import { setColumns } from './../actions'
 
 const NumColsDropdown = ({ dispatch, pageIndex, rowIndex, curNumCols }) => {
   const onClickHandler = (event, numCols) => {

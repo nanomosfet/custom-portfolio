@@ -1,22 +1,44 @@
-/* eslint no-magic-numbers: ["error", { "ignore": [1] }] */
-import deepCopy from '../helpers/deep-copy'
-let newState = {}
+import { combineReducers } from 'redux'
+import initialContent from './../components/initial-content'
+
 const defaultItemContent = {
-      itemType: 'header',
-      text: 'Header'
-    }
-const items = (state, action) => {
+  itemType: 'header',
+  text: 'Header'
+}
+
+const itemsById = (state = initialContent.items.byId, action) => {
   switch (action.type) {
     case 'ADD_ITEM':
-      console.log(action)
-      newState = deepCopy(state)
-      newState.pages[action.pageIndex].rows[action.rowIndex].cols[action.colIndex].items.push(deepCopy(defaultItemContent))
-      console.log(newState)
-
-      return newState
+      return {
+        ...state,
+        [action.itemId]: {
+          ...defaultItemContent,
+          id: action.itemId
+        }
+      }
+    case 'EDIT_ITEM_TEXT':
+      return {
+        ...state,
+        [action.itemId]: {
+          ...state[action.itemId],
+          text: action.newText
+        }
+      }
+    case 'EDIT_ITEM_TYPE':
+      return {
+        ...state,
+        [action.itemId]: {
+          ...state[action.itemId],
+          itemType: action.newType
+        }
+      }
     default:
       return state
   }
 }
+
+const items = combineReducers({
+  byId: itemsById
+})
 
 export default items

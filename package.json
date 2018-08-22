@@ -72,8 +72,9 @@
     "react-router-dom": "^4.3.1",
     "react-select": "^1.2.1",
     "react-spinners": "^0.3.2",
-    "reduce-reducers": "^0.4.3",
+    "react-textarea-autosize": "^7.1.0-1",
     "redux": "^4.0.0",
+    "redux-thunk": "^2.3.0",
     "webpack-dev-server": "^3.1.5"
   },
   "jest": {

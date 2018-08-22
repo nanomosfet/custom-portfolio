@@ -1,21 +1,10 @@
 import React from 'react'
 import { Route, Link } from 'react-router-dom';
 import { connect } from 'react-redux'
-const editPage = (newVal, index, isHome) => ({
-  type: 'EDIT_PAGE',
-  value: newVal,
-  key: index,
-  isHome: isHome
-})
 
-const deletePage = (index, isHome) => ({
-  type: 'DELETE_PAGE',
-  key: index,
-  isHome: isHome
-})
+import { editPage, deletePage } from './../actions'
 
-
-const EditNavDropdownLink = ({ idx, pathTo, activeOnlyWhenExact, label, dispatch, isHome }) => (
+const EditNavDropdownLink = ({ pageId, idx, pathTo, activeOnlyWhenExact, label, dispatch, isHome }) => (
   <Route
     path={pathTo}
     exact={activeOnlyWhenExact}
@@ -31,7 +20,7 @@ const EditNavDropdownLink = ({ idx, pathTo, activeOnlyWhenExact, label, dispatch
                 if (!isHome) {
                   history.push(`/edit/${event.target.value.replace(/\W/g, '').toLowerCase()}`)  
                 }
-                dispatch(editPage(event.target.value, idx, isHome))
+                dispatch(editPage(event.target.value, pageId, isHome))
               }
             }
             size={label.length}
@@ -47,7 +36,7 @@ const EditNavDropdownLink = ({ idx, pathTo, activeOnlyWhenExact, label, dispatch
           className="nav-link text-danger close"
           style={{ display: 'inline-block' }}
           onClick={() => {
-            dispatch(deletePage(idx, isHome))
+            dispatch(deletePage(pageId, isHome))
           }}>&times;</span>
       </li>
 

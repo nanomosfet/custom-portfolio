@@ -39,7 +39,10 @@ app.use(session({ secret: 'cats' }))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(passport.initialize())
 app.use(passport.session())
-
+app.post('/api/save/', bodyParser.json(), (req, res) => {
+  console.log(req.body)
+  res.json(req.body)
+})
 app.get('/api', (req, res) => res.json({ somthing: 'hello' }))
 app.get('/login', (req, res) => res.sendFile(path.join(__dirname, '/dist/login.html')))
 app.post('/login', passport.authenticate('local', { successRedirect: '/edit',
