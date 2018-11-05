@@ -3,15 +3,16 @@ import Nav from './nav'
 import EditablePage from './editable-page'
 import EditNavDropdownLink from '../containers/edit-nav-dropdown-link'
 import AddPageButton from '../containers/add-page-button'
+import SaveStateButton from '../containers/save-state-button'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
-const RouteWithSubRoutes = ({ pageContent, pageIndex }) => (
+const RouteWithSubRoutes = ({ pageContent }) => (
   <Route
     path={pageContent.path}
     exact={true}
     render={() => (
       // pass the sub-routes down to keep nesting
-      <EditablePage pageContent={pageContent} pageIndex={pageIndex}/>
+      <EditablePage rows={pageContent.rows} pageId={pageContent.id}/>
     )}
   />
 );
@@ -30,8 +31,9 @@ const EditableApp = ({ content }) => (
         <ToggleButton />
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
-            {content.pages.map((pageContent, idx) => <EditNavDropdownLink isHome={pageContent.isHome}idx={idx} key={idx} pathTo={pageContent.path} activeOnlyWhenExact={pageContent.path === '/'} label={pageContent.label} />)}
+            {content.pages.map((pageContent, idx) => <EditNavDropdownLink isHome={pageContent.isHome} pageId={pageContent.id} idx={idx} key={idx} pathTo={pageContent.path} activeOnlyWhenExact={pageContent.path === '/'} label={pageContent.label} />)}
             <AddPageButton />
+            <SaveStateButton />
           </ul>
         </div>
       </Nav>

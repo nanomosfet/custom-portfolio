@@ -1,47 +1,72 @@
 /* eslint no-magic-numbers: ["error", { "ignore": [1] }] */
 import deepCopy from '../helpers/deep-copy'
+
+import { combineReducers } from 'redux'
+import initialContent from './../components/initial-content'
+
 let newState = {}
 let curNumCols = 0;
-const defaultColContent = {
-  styleType: 'lightMain',
-  items: [
-    {
-      itemType: 'header',
-      text: 'Header'
-    },
-    {
-      itemType: 'leadText',
-      text: 'leadText'
-    },
-    {
-      itemType: 'pdfDownloadButton',
-      source: 'somePath',
-      text: 'Resume'
-    }
-  ]
-}
-const cols = (state, action) => {
-  switch (action.type) {
-    case 'SET_COLUMNS':
-      curNumCols = state.pages[action.pageIndex].rows[action.rowIndex].cols.length
-      console.log(curNumCols)
-      console.log(curNumCols)
-      console.log(action)
-      console.log(defaultColContent)
-      newState = deepCopy(state)
-      if (action.numCols > curNumCols) {
-        for (let idx = curNumCols; idx < action.numCols; idx++) {
-          newState.pages[action.pageIndex].rows[action.rowIndex].cols.push(deepCopy(defaultColContent))
-        }
-      } else {
-        console.log('splice')
-        newState.pages[action.pageIndex].rows[action.rowIndex].cols.splice(action.numCols)
-      }
 
-      return newState
+let lastColId = 2
+const generateColId = () => ++lastColId
+
+const addRow = (state, action) => {
+  switch (action.type) {
+    case 'ADD_ROW':
+      return {
+        ...state,
+        [action.colId]: {
+          id: action.colId,
+          styleType: 'lightMain',
+          items: []
+        }
+      }
+    default: return state
+  }
+}
+
+const addItem = (state, action) => {
+  return {
+    ...state,
+    [action.colId]: {
+      ...state[action.colId],
+      items: [...state[action.colId].items, action.itemId]
+    }
+  }
+}
+
+const deleteItem = (state, action) => {
+  return {
+    ...state,
+    [action.colId]: {
+      ...state[action.colId],
+      items: state[action.colId].items.filter((itemId) => action.itemId !== itemId)
+    }
+  }
+}
+
+const colsById = (state = initialContent.cols.byId, action) => {
+  switch (action.type) {
+    case 'ADD_COLUMN':
+      return {
+        ...state,
+        [action.col]: {
+          id: action.col,
+          styleType: 'lightMain',
+          items: []
+        }
+      }
+    case 'ADD_ITEM': return addItem(state, action)
+    case 'ADD_ROW': return addRow(state, action)
+    case 'DELETE_ITEM': return deleteItem(state, action)
     default:
       return state
   }
 }
+
+
+const cols = combineReducers({
+  byId: colsById
+})
 
 export default cols

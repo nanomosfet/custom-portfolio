@@ -1,18 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { deleteRow } from './../actions'
 
-const deleteRow = (pageIndex, rowIndex) => ({
-  type: 'DELETE_ROW',
-  pageIndex: pageIndex,
-  rowIndex: rowIndex
-})
 
-const DeleteRowButton = ({ dispatch, pageIndex, rowIndex }) => {
+const DeleteRowButton = ({ dispatch, page, row }) => {
   return (
         <button
           type="button"
           className="close text-danger position-absolute  ml-4 mt-2"
-          onClick={() => (dispatch(deleteRow(pageIndex, rowIndex)))}>
+          onClick={() => (dispatch(deleteRow(page, row)))}>
           <span aria-hidden="true">&times;</span>
         </button>)
 }

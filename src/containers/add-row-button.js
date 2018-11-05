@@ -1,19 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { addRow } from './../actions'
 
-const addRow = (pageIndex) => ({
-  type: 'ADD_ROW',
-  pageIndex: pageIndex
-})
-
-const AddRowButton = ({ dispatch, pageIndex }) => {
+const AddRowButton = ({ dispatch, pageId }) => {
   return (
     <div className="row">
       <div className="col">
         <button
           type="button"
           className="btn btn-success btn-lg btn-block my-2"
-          onClick={() => (dispatch(addRow(pageIndex)))}>
+          onClick={() => (dispatch(addRow(pageId)))}>
           Add Row
         </button>
       </div>

@@ -1,19 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { addPage } from './../actions'
 
-let pageNum = 0
-const addPage = () => ({
-  type: 'ADD_PAGE',
-  pageName: `newpage${pageNum++}`
-})
-
-const AddPageButton = ({ dispatch }) => {
-  return (
-    <li className="nav-item">
-      <a className="nav-link" href="#" onClick={() => (dispatch(addPage()))}>Add Page</a>
-    </li>
-  )
-}
-
+const AddPageButton = ({ dispatch }) => (
+  <li className="nav-item">
+    <a className="nav-link" href="#" onClick={() => (dispatch(addPage()))}>Add Page</a>
+  </li>
+)
 
 export default connect()(AddPageButton)
