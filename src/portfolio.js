@@ -4,7 +4,10 @@ import 'bootstrap'
 import './main.scss'
 import App from './components/app'
 
-import initialContent from './components/initial-content'
 import unNormalize from './helpers/unNormalize'
 
-ReactDOM.render(<App content={unNormalize(initialContent)}/>, document.getElementById('root'))
+fetch('/api/latest').then((res) => res.json()).
+then((content) => {
+  ReactDOM.render(<App content={unNormalize(content)}/>, document.getElementById('root'))
+})
+

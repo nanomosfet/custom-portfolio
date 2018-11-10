@@ -6,7 +6,7 @@ const defaultItemContent = {
   text: 'Header'
 }
 
-const itemsById = (state = initialContent.items.byId, action) => {
+const itemsById = (state = {}, action) => {
   switch (action.type) {
     case 'ADD_ITEM':
       return {
@@ -31,6 +31,10 @@ const itemsById = (state = initialContent.items.byId, action) => {
           ...state[action.itemId],
           itemType: action.newType
         }
+      }
+    case 'RECEIVE_CONTENT':
+      return {
+        ...action.content.items.byId
       }
     default:
       return state

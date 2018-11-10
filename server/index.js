@@ -9,6 +9,81 @@ const LocalStrategy = require('passport-local').Strategy
 const session = require('express-session')
 const bodyParser = require('body-parser')
 
+let contentState = {
+  pages: {
+    byId: {
+      1: {
+        id: 1,
+        path: '/',
+        label: 'Home',
+        isHome: true,
+        rows: [1]
+      },
+      2: {
+        id: 2,
+        path: '/contact',
+        label: 'Contact',
+        rows: [2]
+      }
+    },
+    allPages: [1, 2]
+  },
+  rows: {
+    byId: {
+      1: {
+        cols: [2]
+      },
+      2: {
+        cols: [1]
+      }
+    }
+  },
+  cols: {
+    byId: {
+      1: {
+        id: 1,
+        styleType: 'lightMain',
+        items: [5, 4, 3, 2]
+      },
+      2: {
+        id: 2,
+        styleType: 'darkMain',
+        items: [1]
+      }
+    }
+  },
+  items: {
+    byId: {
+      1: {
+        id: 1,
+        itemType: 'header',
+        text: 'Header'
+      },
+      2: {
+        id: 2,
+        itemType: 'image',
+        source: 'somePath'
+      },
+      3: {
+        id: 3,
+        itemType: 'pdfDownloadButton',
+        source: 'somePath',
+        text: 'Resume'
+      },
+      4: {
+        id: 4,
+        itemType: 'leadText',
+        text: 'Really cool lead text that people pay attention too.'
+      },
+      5: {
+        id: 5,
+        itemType: 'header',
+        text: 'Header'
+      }
+    }
+  }
+}
+
 passport.use(new LocalStrategy((username, password, done) => {
     if (username === 'user' && password === 'password') {
       return done(null, username)
@@ -33,17 +108,51 @@ const ensureAuthenticated = (req, res, next) => {
   return res.status(401).send({ authenticated: false })
 }
 
+/**
+ * @param {object} state  - unFilteredState
+ * @returns {object} - state with no unused stuff
+ */
+const parseSaveState = function (state) {
+  const { pages, cols, items, rows } = state
+
+  const newState = {
+    pages: {
+      allPages: [],
+      byId: {}
+    },
+    cols: { byId: {} },
+    items: { byId: {} },
+    rows: { byId: {} }
+  }
+
+  newState.pages.allPages = pages.allPages
+  newState.pages.allPages.forEach((page) => {
+    newState.pages.byId[page] = pages.byId[page]
+    pages.byId[page].rows.forEach((row) => {
+      newState.rows.byId[row] = rows.byId[row]
+      rows.byId[row].cols.forEach((col) => {
+        newState.cols.byId[col] = cols.byId[col]
+        cols.byId[col].items.forEach((item) => {
+          newState.items.byId[item] = items.byId[item]
+        })
+      })
+    })
+  })
+
+  return newState
+}
+
 app.use(express.static('server/dist'))
-app.use('/edit',express.static('server/dist'))
+app.use('/edit', express.static('server/dist'))
 app.use(session({ secret: 'cats' }))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(passport.initialize())
 app.use(passport.session())
 app.post('/api/save/', bodyParser.json(), (req, res) => {
-  console.log(req.body)
-  res.json(req.body)
+  contentState = parseSaveState(req.body)
+  res.json({ message: 'success' })
 })
-app.get('/api', (req, res) => res.json({ somthing: 'hello' }))
+app.get('/api/latest', (req, res) => res.json(contentState))
 app.get('/login', (req, res) => res.sendFile(path.join(__dirname, '/dist/login.html')))
 app.post('/login', passport.authenticate('local', { successRedirect: '/edit',
                                                     failureRedirect: '/login' }))

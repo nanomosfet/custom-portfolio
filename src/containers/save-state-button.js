@@ -1,20 +1,21 @@
 import React from 'react'
 import { connect } from 'react-redux'
-const getStuff = () => {
+import convertToNormal from './../helpers/convert-to-normal'
+const getStufff = () => {
   return (dispatch, getState) => {
-    fetch('/api/save/', {
+    return fetch('/api/save/', {
       method: 'POST',
       headers: {
             'Content-Type': 'application/json; charset=utf-8'
         },
-      body: JSON.stringify(getState())
+      body: JSON.stringify(convertToNormal(getState()))
     }).then((res) => res.json()).
       then((res) => console.log(res))
   }
 }
 const SaveStateButton = ({ dispatch }) => {
   const onClick = () => {
-    dispatch(getStuff())
+    dispatch(getStufff())
   }
 
   return (

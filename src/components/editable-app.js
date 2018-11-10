@@ -15,7 +15,7 @@ const RouteWithSubRoutes = ({ pageContent }) => (
       <EditablePage rows={pageContent.rows} pageId={pageContent.id}/>
     )}
   />
-);
+)
 
 const ToggleButton = () => (
   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,7 +27,7 @@ const EditableApp = ({ content }) => (
   <Router>
     <div className="container-fluid">
       <Nav>
-        <Link to={content.pages[content.pages.length - 1].path} className="navbar-brand" >Brand</Link>
+        <Link to={content.pages[0].path} className="navbar-brand" >Brand</Link>
         <ToggleButton />
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
