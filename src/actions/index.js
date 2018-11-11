@@ -72,4 +72,10 @@ export const deleteItem = (itemId, colId) => ({
   colId
 })
 
+export const addItemImage = (itemId, image) => ({
+  type: 'ADD_IMAGE_ITEM',
+  itemId,
+  image
+})
+
 

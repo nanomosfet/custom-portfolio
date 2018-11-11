@@ -1,0 +1,20 @@
+.image-upload {
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  position: relative;
+  padding: 5px;
+  transform: translate(0, 0);
+  transition: transform 3s;
+} 
+.image-upload [type=file] {
+  position: absolute;
+  opacity: 0;
+  min-width: 100%;
+  min-height: 100%;
+  cursor: inherit;
+}
+
+.image-added {
+  transform: translate(50em, 0);
+}

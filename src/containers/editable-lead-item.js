@@ -17,7 +17,8 @@ const EditableLeadItem = ({ dispatch, item }) => {
           width: '100%',
           wrap: 'soft',
           resize: 'none',
-          overflow: 'hidden'
+          overflow: 'hidden',
+          color: 'inherit'
 
         }
       }
