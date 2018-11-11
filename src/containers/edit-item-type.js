@@ -18,6 +18,7 @@ const EditItemType = ({ dispatch, itemId, colId }) => {
         <a className="dropdown-item" onClick={() => onClickHandler('header')} href="#">Header</a>
         <a className="dropdown-item" onClick={() => onClickHandler('leadText')} href="#">Lead</a>
         <a className="dropdown-item" onClick={() => onClickHandler('pdfDownloadButton')} href="#">PDF</a>
+        <a className="dropdown-item" onClick={() => onClickHandler('image')} href="#">Image</a>
         <a className="dropdown-item" onClick={() => dispatch(deleteItem(itemId, colId))} href="#">Delete</a>
       </div>
     </div>
