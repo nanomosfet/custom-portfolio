@@ -28,7 +28,7 @@ const deleteColumn = (state, action) => {
   }
 }
 
-const rowsById = (state = initialContent.rows.byId, action) => {
+const rowsById = (state = {}, action) => {
   switch (action.type) {
     case 'ADD_ROW':
 
@@ -45,6 +45,10 @@ const rowsById = (state = initialContent.rows.byId, action) => {
       }
     case 'ADD_COLUMN': return addColumn(state, action)
     case 'DELETE_COLUMN': return deleteColumn(state, action)
+    case 'RECEIVE_CONTENT':
+      return {
+        ...action.content.rows.byId
+      }
     default:
       return state
   }

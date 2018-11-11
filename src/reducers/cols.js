@@ -1,14 +1,6 @@
 /* eslint no-magic-numbers: ["error", { "ignore": [1] }] */
-import deepCopy from '../helpers/deep-copy'
 
 import { combineReducers } from 'redux'
-import initialContent from './../components/initial-content'
-
-let newState = {}
-let curNumCols = 0;
-
-let lastColId = 2
-const generateColId = () => ++lastColId
 
 const addRow = (state, action) => {
   switch (action.type) {
@@ -45,7 +37,7 @@ const deleteItem = (state, action) => {
   }
 }
 
-const colsById = (state = initialContent.cols.byId, action) => {
+const colsById = (state = {}, action) => {
   switch (action.type) {
     case 'ADD_COLUMN':
       return {
@@ -59,6 +51,10 @@ const colsById = (state = initialContent.cols.byId, action) => {
     case 'ADD_ITEM': return addItem(state, action)
     case 'ADD_ROW': return addRow(state, action)
     case 'DELETE_ITEM': return deleteItem(state, action)
+    case 'RECEIVE_CONTENT':
+      return {
+        ...action.content.cols.byId
+      }
     default:
       return state
   }

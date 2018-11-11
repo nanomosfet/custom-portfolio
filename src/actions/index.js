@@ -1,12 +1,16 @@
-let rowId = 2
-let pageNum = 2
-let colNum = 2
-let itemIdCount = 10
-
-const generateRowId = () => ++rowId
-const generatePageId = () => ++pageNum
-const generateColId = () => ++colNum
-const generateItemId = () => ++itemIdCount
+const randomId = () => {
+  const randomValues = new Uint32Array(4)
+  window.crypto.getRandomValues(randomValues)
+  let res = ''
+  randomValues.forEach((value) => {
+    res += value.toString(36)
+  })
+  return res
+}
+const generateRowId = () => randomId()
+const generatePageId = () => randomId()
+const generateColId = () => randomId()
+const generateItemId = () => randomId()
 
 export const addPage = () => ({
   type: 'ADD_PAGE',
@@ -67,3 +71,5 @@ export const deleteItem = (itemId, colId) => ({
   itemId,
   colId
 })
+
+

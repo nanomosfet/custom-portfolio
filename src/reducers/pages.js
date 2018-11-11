@@ -20,14 +20,15 @@ const deleteRow = (state, action) => {
     }
   }
 }
-const pagesById = (state = convertToEdit(initialContent).pages.byId, action) => {
+const pagesById = (state = {}, action) => {
+  console.log(action)
   switch (action.type) {
     case 'ADD_PAGE':
       return {
         ...state,
         [action.pageId]: {
           path: `/edit/${action.pageId}`,
-          label: `page-${action.pageId}`,
+          label: `New Page`,
           id: action.pageId,
           rows: []
         }
@@ -43,28 +44,27 @@ const pagesById = (state = convertToEdit(initialContent).pages.byId, action) => 
             : `/edit/${action.value.replace(/\W/g, '').toLowerCase()}`
         }
       }
-    case 'DELETE_PAGE':
-      if (action.isHome) {
-        return state
-      }
-
-      return ({
-        ...state,
-        [action.pageId]: null
-      })
     case 'ADD_ROW': return addRow(state, action)
     case 'DELETE_ROW': return deleteRow(state, action)
+    case 'RECEIVE_CONTENT':
+      return {
+        ...action.content.pages.byId
+      }
     default:
       return state
     }
 }
 
-const allPages = (state = initialContent.pages.allPages, action) => {
+const allPages = (state = [], action) => {
   switch (action.type) {
     case 'ADD_PAGE':
       return state.concat(action.pageId)
     case 'DELETE_PAGE':
       return state.filter((pageId) => (pageId !== action.pageId || action.isHome))
+    case 'RECEIVE_CONTENT':
+      return [
+        ...action.content.pages.allPages
+      ]
     default:
       return state
   }

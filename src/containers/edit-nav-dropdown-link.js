@@ -1,16 +1,16 @@
 import React from 'react'
-import { Route, Link } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import { editPage, deletePage } from './../actions'
 
-const EditNavDropdownLink = ({ pageId, idx, pathTo, activeOnlyWhenExact, label, dispatch, isHome }) => (
+const EditNavDropdownLink = ({ pageId, pathTo, activeOnlyWhenExact, label, dispatch, isHome }) => (
   <Route
     path={pathTo}
     exact={activeOnlyWhenExact}
     children={({ match, history }) => (
       <li className={match ? 'nav-item active' : 'nav-item'}>
-        <Link to={pathTo} >
+        <Link to={pathTo} draggable="false">
           <input
             type="text"
             className="nav-link"
@@ -18,7 +18,7 @@ const EditNavDropdownLink = ({ pageId, idx, pathTo, activeOnlyWhenExact, label, 
             onChange={
               (event) => {
                 if (!isHome) {
-                  history.push(`/edit/${event.target.value.replace(/\W/g, '').toLowerCase()}`)  
+                  history.push(`/edit/${event.target.value.replace(/\W/g, '').toLowerCase()}`)
                 }
                 dispatch(editPage(event.target.value, pageId, isHome))
               }
