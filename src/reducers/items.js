@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux'
-import initialContent from './../components/initial-content'
 
 const defaultItemContent = {
   itemType: 'header',
@@ -14,6 +13,15 @@ const itemsById = (state = {}, action) => {
         [action.itemId]: {
           ...defaultItemContent,
           id: action.itemId
+        }
+      }
+    case 'ADD_IMAGE_ITEM':
+      return {
+        ...state,
+        [action.itemId]: {
+          ...state[action.itemId],
+          source: window.URL.createObjectURL(action.image),
+          isAdded: true
         }
       }
     case 'EDIT_ITEM_TEXT':
@@ -35,6 +43,14 @@ const itemsById = (state = {}, action) => {
     case 'RECEIVE_CONTENT':
       return {
         ...action.content.items.byId
+      }
+    case 'UPDATE_ITEM_SOURCE':
+      return {
+        ...state,
+        [action.itemId]: {
+          ...state[action.itemId],
+          source: `/uploads/${action.source}`
+        }
       }
     default:
       return state
