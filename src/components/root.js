@@ -1,4 +1,4 @@
-import React from 'React'
+import React from 'react'
 import { Provider } from 'react-redux'
 
 import Portfolio from '../containers/portfolio'
