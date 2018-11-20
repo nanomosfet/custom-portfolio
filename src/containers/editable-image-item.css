@@ -5,8 +5,8 @@
   position: relative;
   padding: 5px;
   transform: translate(0, 0);
-  transition: transform 3s;
-} 
+  transition: transform 3s, font-size 3s;
+}
 .image-upload [type=file] {
   position: absolute;
   opacity: 0;
@@ -16,5 +16,17 @@
 }
 
 .image-added {
-  transform: translate(50em, 0);
+  transform: translate(0, 316px);
+  font-size: 0.875rem;
+}
+
+.image-margin{
+  margin-bottom: 0;
+  transform: scale(0);
+  transition: all 3000ms;
+}
+
+.image-margin.added-margin{
+  margin-bottom: 60px;
+  transform: scale(1);
 }
