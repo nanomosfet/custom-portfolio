@@ -3,6 +3,9 @@ node_js:
   - "lts/*"
   - "node"
   - "8"
-script:
-  - "git diff --name-only master..$TRAVIS_BRANCH | grep -E '\.js$' | xargs npx eslint"
-  - "npm test"
+jobs:
+  include:
+    - stage: test
+      script: git diff --name-only master..$TRAVIS_BRANCH | grep -E '\.js$' | xargs npx eslint
+      script: npm test
+      
