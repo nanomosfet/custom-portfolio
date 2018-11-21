@@ -11,15 +11,15 @@ const EditableHeaderItem = ({ dispatch, item }) => {
         value={item.text}
         className="h1 text-center"
         style={
-        {
-          background: 'transparent',
-          border: 'none',
-          width: '100%',
-          resize: 'none',
-          overflow: 'hidden'
+          {
+            background: 'transparent',
+            border: 'none',
+            width: '100%',
+            resize: 'none',
+            overflow: 'hidden'
+          }
         }
-      }
-      onChange={(event) => dispatch(editItemText(item.id, event.target.value))}
+        onChange={(event) => dispatch(editItemText(item.id, event.target.value))}
       />
     </div>
   )

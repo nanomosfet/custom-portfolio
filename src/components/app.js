@@ -38,4 +38,4 @@ const App = ({ content }) => (
   </Router>
 )
 
- export default App
+export default App

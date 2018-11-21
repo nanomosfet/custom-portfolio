@@ -22,5 +22,4 @@ const DeleteColumnButton = ({ dispatch, columnId, rowId }) => {
   )
 }
 
-
 export default connect()(DeleteColumnButton)

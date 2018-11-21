@@ -1,10 +1,15 @@
 const randomId = () => {
-  const randomValues = new Uint32Array(4)
+  const numValues = 4
+  const stringLength = 36
+  const randomValues = new Uint32Array(numValues)
+
   window.crypto.getRandomValues(randomValues)
   let res = ''
+
   randomValues.forEach((value) => {
-    res += value.toString(36)
+    res += value.toString(stringLength)
   })
+
   return res
 }
 const generateRowId = () => randomId()
@@ -77,5 +82,3 @@ export const addItemImage = (itemId, image) => ({
   itemId,
   image
 })
-
-

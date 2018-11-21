@@ -5,7 +5,8 @@ global.URL = {
 }
 
 test('initialization', () => {
-  expect(items(undefined,
+  expect(items(
+    undefined,
     {}
   )).toEqual({
     byId: {}

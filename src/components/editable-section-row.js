@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import Column from './../containers/column'
 import DeleteRowButton from './../containers/delete-row-button.js'
 import AddColumnButton from './../containers/add-column-button.js'

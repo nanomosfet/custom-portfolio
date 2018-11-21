@@ -25,5 +25,4 @@ const EditItemType = ({ dispatch, itemId, colId }) => {
   )
 }
 
-
 export default connect()(EditItemType)

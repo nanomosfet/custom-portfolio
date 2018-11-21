@@ -11,18 +11,18 @@ const EditableLeadItem = ({ dispatch, item }) => {
         value={item.text}
         className="p text-center lead font-weight-normal my-1 py-1"
         style={
-        {
-          background: 'transparent',
-          border: 'none',
-          width: '100%',
-          wrap: 'soft',
-          resize: 'none',
-          overflow: 'hidden',
-          color: 'inherit'
+          {
+            background: 'transparent',
+            border: 'none',
+            width: '100%',
+            wrap: 'soft',
+            resize: 'none',
+            overflow: 'hidden',
+            color: 'inherit'
 
+          }
         }
-      }
-      onChange={(event) => dispatch(editItemText(item.id, event.target.value))}
+        onChange={(event) => dispatch(editItemText(item.id, event.target.value))}
       >
 
       </Textarea>

@@ -12,10 +12,10 @@ const receivePosts = (content) => ({
   content
 })
 const getStuff = () => {
-  return (dispatch, getState) => {
-    return fetch('/api/latest/').
-    then((res) => res.json()).
-    then((res) => dispatch(receivePosts(convertToEdit(res))))
+  return (dispatch) => {
+    return fetch('/api/latest/')
+      .then((res) => res.json())
+      .then((res) => dispatch(receivePosts(convertToEdit(res))))
   }
 }
 
@@ -24,7 +24,5 @@ const store = createStore(
   applyMiddleware(thunkMiddleware)
 )
 
-store.dispatch(getStuff()).
-then(() => ReactDOM.render(<Root store={store}/>, document.getElementById('root')))
-
-
+store.dispatch(getStuff())
+  .then(() => ReactDOM.render(<Root store={store}/>, document.getElementById('root')))

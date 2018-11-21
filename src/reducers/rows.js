@@ -1,6 +1,4 @@
-/* eslint no-magic-numbers: ["error", { "ignore": [1] }] */
 import { combineReducers } from 'redux'
-import initialContent from './../components/initial-content'
 
 const addColumn = (state, action) => {
   return {
@@ -30,27 +28,27 @@ const deleteColumn = (state, action) => {
 
 const rowsById = (state = {}, action) => {
   switch (action.type) {
-    case 'ADD_ROW':
+  case 'ADD_ROW':
 
-      return {
-        ...state,
-        [action.rowId]: {
-          cols: [action.colId]
-        }
+    return {
+      ...state,
+      [action.rowId]: {
+        cols: [action.colId]
       }
-    case 'DELETE_ROW':
-      return {
-        ...state,
-        [action.row]: null
-      }
-    case 'ADD_COLUMN': return addColumn(state, action)
-    case 'DELETE_COLUMN': return deleteColumn(state, action)
-    case 'RECEIVE_CONTENT':
-      return {
-        ...action.content.rows.byId
-      }
-    default:
-      return state
+    }
+  case 'DELETE_ROW':
+    return {
+      ...state,
+      [action.row]: null
+    }
+  case 'ADD_COLUMN': return addColumn(state, action)
+  case 'DELETE_COLUMN': return deleteColumn(state, action)
+  case 'RECEIVE_CONTENT':
+    return {
+      ...action.content.rows.byId
+    }
+  default:
+    return state
   }
 }
 

@@ -1,6 +1,5 @@
-import React from 'react';
+import React from 'react'
 import Section from './section'
-
 
 const SectionRow = ({ columns }) => (
   <div className="row">

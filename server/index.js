@@ -1,6 +1,3 @@
-/* global __dirname */
-/* eslint no-undef: "error" */
-
 const express = require('express')
 const app = express()
 const path = require('path')
@@ -10,119 +7,51 @@ const session = require('express-session')
 const bodyParser = require('body-parser')
 const multer = require('multer')
 const crypto = require('crypto')
+const numBytes = 16
+const appPort = 3000
 const storage = multer.diskStorage({
-  destination: __dirname + '/uploads',
+  destination: `${__dirname}/uploads`,
   filename: function (req, file, cb) {
-    crypto.pseudoRandomBytes(16, (err, raw) => {
+    crypto.pseudoRandomBytes(numBytes, (err, raw) => {
       if (err) {
         return cb(err)
       }
 
-      cb(null, raw.toString('hex') + path.extname(file.originalname))
+      return cb(null, raw.toString('hex') + path.extname(file.originalname))
     })
   }
 })
 
 const upload = multer({ storage: storage })
-let contentState = {
-  pages: {
-    byId: {
-      1: {
-        id: 1,
-        path: '/',
-        label: 'Home',
-        isHome: true,
-        rows: [1]
-      },
-      2: {
-        id: 2,
-        path: '/contact',
-        label: 'Contact',
-        rows: [2]
-      }
-    },
-    allPages: [1, 2]
-  },
-  rows: {
-    byId: {
-      1: {
-        cols: [2]
-      },
-      2: {
-        cols: [1]
-      }
-    }
-  },
-  cols: {
-    byId: {
-      1: {
-        id: 1,
-        styleType: 'lightMain',
-        items: [5, 4, 3, 2]
-      },
-      2: {
-        id: 2,
-        styleType: 'darkMain',
-        items: [1]
-      }
-    }
-  },
-  items: {
-    byId: {
-      1: {
-        id: 1,
-        itemType: 'header',
-        text: 'Header'
-      },
-      2: {
-        id: 2,
-        itemType: 'image',
-        source: 'somePath',
-        isAdded: false
-      },
-      3: {
-        id: 3,
-        itemType: 'pdfDownloadButton',
-        source: 'somePath',
-        text: 'Resume'
-      },
-      4: {
-        id: 4,
-        itemType: 'leadText',
-        text: 'Really cool lead text that people pay attention too.'
-      },
-      5: {
-        id: 5,
-        itemType: 'header',
-        text: 'Header'
-      }
-    }
-  }
-}
+let contentState = require('./initial-state.json')
 
 passport.use(new LocalStrategy((username, password, done) => {
-    if (username === 'user' && password === 'password') {
-      return done(null, username)
-    }
-
-    return done(null, false, { message: 'Incorrect Credentials' })
-  }))
-passport.serializeUser((user, done) => {
-  done(null, user);
-});
-
-passport.deserializeUser((user, done) => {
-  done(null, user);
-});
-
-
-const ensureAuthenticated = (req, res, next) => {
-  return next()
-  if (req.isAuthenticated()) {
-    return next()
+  if (username === 'user' && password === 'password') {
+    return done(null, username)
   }
 
-  return res.status(401).send({ authenticated: false })
+  return done(null, false, { message: 'Incorrect Credentials' })
+}))
+passport.serializeUser((user, done) => {
+  done(null, user)
+})
+
+passport.deserializeUser((user, done) => {
+  done(null, user)
+})
+
+const ensureAuthenticated = (req, res, next) => {
+  const unAuthorized = 401
+
+  if (process.env.NODE_ENV === 'production') {
+    if (req.isAuthenticated()) {
+      return next()
+    }
+
+    return res.status(unAuthorized).send({ authenticated: false })
+  }
+
+  return next()
 }
 
 /**
@@ -159,7 +88,7 @@ const parseSaveState = function (state) {
   return newState
 }
 
-app.use('/uploads', express.static(__dirname + '/uploads'))
+app.use('/uploads', express.static(`${__dirname}/uploads`))
 app.use(express.static('server/dist'))
 app.use('/edit', express.static('server/dist'))
 app.use(session({ secret: 'cats' }))
@@ -182,11 +111,10 @@ app.post('/api/save/files', upload.array('files'), (req, res) => {
   res.json(files)
 })
 
-
 app.get('/api/latest', (req, res) => res.json(contentState))
 app.get('/login', (req, res) => res.sendFile(path.join(__dirname, '/dist/login.html')))
 app.post('/login', passport.authenticate('local', { successRedirect: '/edit',
-                                                    failureRedirect: '/login' }))
+  failureRedirect: '/login' }))
 app.get('/logout', (req, res) => {
   req.logout()
   res.redirect('/')
@@ -202,4 +130,4 @@ app.get(
   (req, res) => res.sendFile(path.join(__dirname, '/dist/editable.html'))
 )
 app.get('/*', (req, res) => res.sendFile(path.join(__dirname, '/dist/static.html')))
-app.listen(3000, () => console.log('Example app listening on port 3000!'))
+app.listen(appPort, () => console.log('Example app listening on port 3000!'))
