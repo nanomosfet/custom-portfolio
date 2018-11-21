@@ -5,7 +5,5 @@ node_js:
   - "8"
 jobs:
   include:
-    - stage: test
+    - stage: lint
       script: git diff --name-only master..$TRAVIS_BRANCH | grep -E '\.js$' | xargs npx eslint
-      script: npm test
-      
