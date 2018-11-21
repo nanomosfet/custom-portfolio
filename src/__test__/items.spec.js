@@ -51,9 +51,10 @@ test('ADD_IMAGE_ITEM', () => {
     byId: {
       1: {
         id: 1,
-          itemType: 'header',
-          text: 'text',
-          source: 'someObjectUrl'
+        isAdded: true,
+        itemType: 'header',
+        text: 'text',
+        source: 'someObjectUrl'
       }
     }
   })
@@ -167,4 +168,3 @@ test('UPDATE_ITEM_SOURCE', () => {
     }
   })
 })
-
