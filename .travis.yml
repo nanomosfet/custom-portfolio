@@ -1,4 +1,8 @@
 language: node_js
 node_js:
-  - "iojs"
-  - "7"
+  - "lts/*"
+  - "node"
+  - "8"
+script:
+  - "git diff --name-only master..$TRAVIS_BRANCH | grep -E '\.js$' | xargs npx eslint"
+  - "npm test"
