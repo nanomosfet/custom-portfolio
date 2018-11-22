@@ -20,4 +20,3 @@ const SectionItem = ({ item, styleType }) => {
 }
 
 export default SectionItem
-

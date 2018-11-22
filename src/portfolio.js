@@ -6,8 +6,7 @@ import App from './components/app'
 
 import unNormalize from './helpers/unNormalize'
 
-fetch('/api/latest').then((res) => res.json()).
-then((content) => {
-  ReactDOM.render(<App content={unNormalize(content)}/>, document.getElementById('root'))
-})
-
+fetch('/api/latest').then((res) => res.json())
+  .then((content) => {
+    ReactDOM.render(<App content={unNormalize(content)}/>, document.getElementById('root'))
+  })

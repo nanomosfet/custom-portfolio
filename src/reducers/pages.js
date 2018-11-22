@@ -1,6 +1,4 @@
 import { combineReducers } from 'redux'
-import initialContent from './../components/initial-content'
-import convertToEdit from './../helpers/convert-to-edit'
 const addRow = (state, action) => {
   return {
     ...state,
@@ -23,50 +21,50 @@ const deleteRow = (state, action) => {
 const pagesById = (state = {}, action) => {
   console.log(action)
   switch (action.type) {
-    case 'ADD_PAGE':
-      return {
-        ...state,
-        [action.pageId]: {
-          path: `/edit/${action.pageId}`,
-          label: `New Page`,
-          id: action.pageId,
-          rows: []
-        }
+  case 'ADD_PAGE':
+    return {
+      ...state,
+      [action.pageId]: {
+        path: `/edit/${action.pageId}`,
+        label: 'New Page',
+        id: action.pageId,
+        rows: []
       }
-    case 'EDIT_PAGE':
-      return {
-        ...state,
-        [action.pageId]: {
-          ...state[action.pageId],
-          label: action.value,
-          path: (action.isHome)
-            ? state[action.pageId].path
-            : `/edit/${action.value.replace(/\W/g, '').toLowerCase()}`
-        }
-      }
-    case 'ADD_ROW': return addRow(state, action)
-    case 'DELETE_ROW': return deleteRow(state, action)
-    case 'RECEIVE_CONTENT':
-      return {
-        ...action.content.pages.byId
-      }
-    default:
-      return state
     }
+  case 'EDIT_PAGE':
+    return {
+      ...state,
+      [action.pageId]: {
+        ...state[action.pageId],
+        label: action.value,
+        path: (action.isHome)
+          ? state[action.pageId].path
+          : `/edit/${action.value.replace(/\W/g, '').toLowerCase()}`
+      }
+    }
+  case 'ADD_ROW': return addRow(state, action)
+  case 'DELETE_ROW': return deleteRow(state, action)
+  case 'RECEIVE_CONTENT':
+    return {
+      ...action.content.pages.byId
+    }
+  default:
+    return state
+  }
 }
 
 const allPages = (state = [], action) => {
   switch (action.type) {
-    case 'ADD_PAGE':
-      return state.concat(action.pageId)
-    case 'DELETE_PAGE':
-      return state.filter((pageId) => (pageId !== action.pageId || action.isHome))
-    case 'RECEIVE_CONTENT':
-      return [
-        ...action.content.pages.allPages
-      ]
-    default:
-      return state
+  case 'ADD_PAGE':
+    return state.concat(action.pageId)
+  case 'DELETE_PAGE':
+    return state.filter((pageId) => (pageId !== action.pageId || action.isHome))
+  case 'RECEIVE_CONTENT':
+    return [
+      ...action.content.pages.allPages
+    ]
+  default:
+    return state
   }
 }
 

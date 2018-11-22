@@ -4,7 +4,7 @@ import EditablePage from './editable-page'
 import EditNavDropdownLink from '../containers/edit-nav-dropdown-link'
 import AddPageButton from '../containers/add-page-button'
 import SaveStateButton from '../containers/save-state-button'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
 const RouteWithSubRoutes = ({ pageContent }) => (
   <Route
@@ -42,4 +42,4 @@ const EditableApp = ({ content }) => (
   </Router>
 )
 
- export default EditableApp
+export default EditableApp

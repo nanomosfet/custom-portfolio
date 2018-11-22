@@ -17,5 +17,4 @@ const AddRowButton = ({ dispatch, pageId }) => {
   )
 }
 
-
 export default connect()(AddRowButton)

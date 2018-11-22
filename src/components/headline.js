@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 const Headline = () => (
   <div className="row mt-3">
     <div className="col-md mt-5">
@@ -20,6 +20,5 @@ const Headline = () => (
     </div>
   </div>
 )
-
 
 export default Headline
