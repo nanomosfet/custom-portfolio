@@ -8,7 +8,9 @@ const bodyParser = require('body-parser')
 const multer = require('multer')
 const crypto = require('crypto')
 const numBytes = 16
-const appPort = 3000
+const defaultPort = 3000
+const portArgNum = 2
+const appPort = process.argv[portArgNum] || defaultPort
 const storage = multer.diskStorage({
   destination: `${__dirname}/uploads`,
   filename: function (req, file, cb) {
@@ -130,4 +132,4 @@ app.get(
   (req, res) => res.sendFile(path.join(__dirname, '/dist/editable.html'))
 )
 app.get('/*', (req, res) => res.sendFile(path.join(__dirname, '/dist/static.html')))
-app.listen(appPort, () => console.log('Example app listening on port 3000!'))
+app.listen(appPort, () => console.log(`Example app listening on port ${appPort}!`))

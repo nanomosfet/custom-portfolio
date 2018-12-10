@@ -10,7 +10,7 @@
     "start:dev": "npm-run-all --parallel dev-server watch",
     "start": "run-s build prod-server",
     "dev-server": "nodemon server",
-    "prod-server": "node server"
+    "prod-server": "node server 80"
   },
   "author": "Timothy Searcy",
   "license": "ISC",
