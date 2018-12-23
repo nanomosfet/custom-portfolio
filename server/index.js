@@ -10,6 +10,7 @@ const crypto = require('crypto')
 const numBytes = 16
 const defaultPort = 3000
 const portArgNum = 2
+const config = require('./../not-secrets.json')
 const appPort = process.argv[portArgNum] || defaultPort
 const storage = multer.diskStorage({
   destination: `${__dirname}/uploads`,
@@ -28,7 +29,7 @@ const upload = multer({ storage: storage })
 let contentState = require('./initial-state.json')
 
 passport.use(new LocalStrategy((username, password, done) => {
-  if (username === 'user' && password === 'password') {
+  if (username === config.username && password === config.password) {
     return done(null, username)
   }
 
@@ -45,7 +46,7 @@ passport.deserializeUser((user, done) => {
 const ensureAuthenticated = (req, res, next) => {
   const unAuthorized = 401
 
-  if (process.env.NODE_ENV === 'production') {
+  if (config.useAuth) {
     if (req.isAuthenticated()) {
       return next()
     }
