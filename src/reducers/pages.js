@@ -18,7 +18,14 @@ const deleteRow = (state, action) => {
     }
   }
 }
-const pagesById = (state = {}, action) => {
+const pagesById = (state = {
+  1: {
+    path: '/edit/',
+    label: 'Home',
+    id: 1,
+    rows: []
+  }
+}, action) => {
   console.log(action)
   switch (action.type) {
   case 'ADD_PAGE':
@@ -53,7 +60,7 @@ const pagesById = (state = {}, action) => {
   }
 }
 
-const allPages = (state = [], action) => {
+const allPages = (state = [1], action) => {
   switch (action.type) {
   case 'ADD_PAGE':
     return state.concat(action.pageId)

@@ -11,7 +11,8 @@
     "start": "run-s build prod-server",
     "dev-server": "nodemon server",
     "prod-server": "node server 80",
-    "coveralls" : "jest --coverage --coverageReporters=text-lcov | coveralls"
+    "coveralls" : "jest --coverage --coverageReporters=text-lcov | coveralls",
+    "lint" : "eslint ."
   },
   "author": "Timothy Searcy",
   "license": "ISC",
@@ -26,6 +27,8 @@
     "babel-preset-stage-2": "^6.24.1",
     "coveralls": "^3.0.2",
     "css-loader": "^0.28.9",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
     "eslint": "^5.3.0",
     "eslint-config-standard": "^12.0.0",
     "eslint-plugin-import": "^2.13.0",
@@ -101,6 +104,7 @@
       "!**/dist/**",
       "!**/webpack*",
       "!**/coverage/**"
-    ]
+    ],
+    "setupFiles" : ["./setup-tests.js"]
   }
 }
