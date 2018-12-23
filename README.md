@@ -23,7 +23,7 @@ create your config file in root.
 ```json
 {
   "username" : "user",
-  "password" : "password,
+  "password" : "password",
   "useAuth"  : false
 }
 ```
