@@ -1,3 +1,6 @@
+[![Coverage Status](https://coveralls.io/repos/github/nanomosfet/custom-portfolio/badge.svg?branch=master)](https://coveralls.io/github/nanomosfet/custom-portfolio?branch=master)
+[![Build Status](https://travis-ci.com/nanomosfet/custom-portfolio.svg?branch=master)](https://travis-ci.com/nanomosfet/custom-portfolio)
+
 # Customizable portfolio
 
 Node version : 8
