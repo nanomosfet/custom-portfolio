@@ -16,9 +16,9 @@ npm install
 ```
 
 
-create your config file in root.
+create your not-secrets.json config file in the root.
 
-`config.json`
+`not-secrets.json`
 
 ```json
 {
