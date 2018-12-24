@@ -50,7 +50,6 @@ rules:
   func-call-spacing: error
   func-name-matching: error
   func-style: error
-  function-paren-newline: error
   generator-star-spacing: error
   global-require: 'off'
   guard-for-in: error

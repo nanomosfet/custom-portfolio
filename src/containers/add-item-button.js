@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { addItem } from './../actions'
 
-const AddItemButton = ({ dispatch, columnId }) => {
+export const AddItemButton = ({ dispatch, columnId }) => {
   return (
     <div className="row">
       <div className="col">

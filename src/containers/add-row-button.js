@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { addRow } from './../actions'
 
-const AddRowButton = ({ dispatch, pageId }) => {
+export const AddRowButton = ({ dispatch, pageId }) => {
   return (
     <div className="row">
       <div className="col">

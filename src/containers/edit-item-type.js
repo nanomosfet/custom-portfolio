@@ -3,9 +3,8 @@ import { connect } from 'react-redux'
 
 import { editItemType, deleteItem } from './../actions'
 
-const EditItemType = ({ dispatch, itemId, colId }) => {
+export const EditItemType = ({ dispatch, itemId, colId }) => {
   const onClickHandler = (newType) => {
-    event.preventDefault()
     dispatch(editItemType(itemId, newType))
   }
 
