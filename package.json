@@ -4,15 +4,16 @@
   "description": "This application creates a way for doctors to communicate with patients and vise versa.",
   "main": "index.js",
   "scripts": {
-    "test": "jest --coverage",
-    "watch": "webpack --config webpack.dev.js --watch",
+    "test": "run-s build jest",
+    "jest" : "jest",
+    "watch" : "webpack --config webpack.dev.js --watch",
     "build": "webpack --config webpack.prod.js",
     "start:dev": "npm-run-all --parallel dev-server watch",
     "start": "run-s build prod-server",
-    "dev-server": "nodemon server",
-    "prod-server": "node server 80",
-    "coveralls" : "jest --coverage --coverageReporters=text-lcov | coveralls",
-    "lint" : "eslint ."
+    "dev-server": "nodemon server/server.js",
+    "prod-server": "node server/server.js 80",
+    "coveralls": "jest --coverage --coverageReporters=text-lcov | coveralls",
+    "lint": "eslint ."
   },
   "author": "Timothy Searcy",
   "license": "ISC",
@@ -53,6 +54,8 @@
     "regenerator-runtime": "^0.11.1",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.20.1",
+    "superagent": "^4.0.0",
+    "supertest": "^3.3.0",
     "uglifyjs-webpack-plugin": "^1.1.8",
     "url-loader": "^1.0.0",
     "webpack": "^4.16.4",
@@ -105,6 +108,8 @@
       "!**/webpack*",
       "!**/coverage/**"
     ],
-    "setupFiles" : ["./setup-tests.js"]
+    "setupFiles": [
+      "./setup-tests.js"
+    ]
   }
 }

@@ -8,4 +8,4 @@ jobs:
     - stage: lint
       script: npx eslint .
     - stage: Produce Coverage
-      script: jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
+      script: npm run build && jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
