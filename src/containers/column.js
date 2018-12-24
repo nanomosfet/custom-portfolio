@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 
 import EditableSection from '../components/editable-section.js'
 
-const mapStateToProps = (state, ownProps) => {
+export const mapStateToProps = (state, ownProps) => {
   const { rowId, columnId } = ownProps
   const column = state.cols.byId[columnId]
 

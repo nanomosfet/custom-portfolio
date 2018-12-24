@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { addItemImage } from './../actions'
 import './editable-image-item.css'
-const EditableImageItem = ({ dispatch, item }) => {
+export const EditableImageItem = ({ dispatch, item }) => {
   return (
     <div>
       <div
