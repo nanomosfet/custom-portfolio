@@ -22,12 +22,4 @@ it('should mount', () => {
   const appComp = component.find(EditableApp)
 
   expect(appComp.find(Route).length).toEqual(2)
-
-  appComp.find(Route).forEach((node) => {
-    console.log(node.props())
-    if (node.props().render) {
-      console.log('dfd')
-      console.log(node.render())
-    }
-  })
 })
