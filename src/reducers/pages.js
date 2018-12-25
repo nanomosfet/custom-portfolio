@@ -26,7 +26,6 @@ const pagesById = (state = {
     rows: []
   }
 }, action) => {
-  console.log(action)
   switch (action.type) {
   case 'ADD_PAGE':
     return {
