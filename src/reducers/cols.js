@@ -1,17 +1,13 @@
 import { combineReducers } from 'redux'
 
 const addRow = (state, action) => {
-  switch (action.type) {
-  case 'ADD_ROW':
-    return {
-      ...state,
-      [action.colId]: {
-        id: action.colId,
-        styleType: 'lightMain',
-        items: []
-      }
+  return {
+    ...state,
+    [action.colId]: {
+      id: action.colId,
+      styleType: 'lightMain',
+      items: []
     }
-  default: return state
   }
 }
 
