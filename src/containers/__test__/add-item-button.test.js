@@ -1,7 +1,7 @@
 /* eslint no-magic-numbers: "off"*/
 import React from 'react'
 import { shallow } from 'enzyme'
-import { AddItemButton } from '../containers/add-item-button.js'
+import { AddItemButton } from '../add-item-button.js'
 
 it('mounts', () => {
   const dispatch = jest.fn()

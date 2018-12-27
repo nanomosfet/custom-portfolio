@@ -1,5 +1,5 @@
 /* eslint no-magic-numbers: "off"*/
-import { mapStateToProps } from '../containers/column.js'
+import { mapStateToProps } from '../column.js'
 
 jest.mock('react-redux', () => ({
   connect: jest.fn().mockReturnValue(jest.fn())
