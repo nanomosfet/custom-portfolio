@@ -21,7 +21,7 @@ const deleteColumn = (state, action) => {
     ...state,
     [action.rowId]: {
       ...state[action.rowId],
-      cols: state[action.rowId].cols.filter((colId) => colId !== action.colId)
+      cols: newCols
     }
   }
 }
@@ -33,13 +33,18 @@ const rowsById = (state = {}, action) => {
     return {
       ...state,
       [action.rowId]: {
+        id: action.rowId,
         cols: [action.colId]
       }
     }
   case 'DELETE_ROW':
     return {
-      ...state,
-      [action.row]: null
+      ...Object.keys(state)
+        .filter((rowId) => rowId.toString() !== action.row.toString())
+        .reduce((acc, curr) => ({
+          ...acc,
+          [curr]: state[curr]
+        }), {})
     }
   case 'ADD_COLUMN': return addColumn(state, action)
   case 'DELETE_COLUMN': return deleteColumn(state, action)
