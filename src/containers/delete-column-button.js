@@ -1,13 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { deleteColumn } from '../actions'
 
-const deleteColumn = (colId, rowId) => ({
-  type: 'DELETE_COLUMN',
-  colId,
-  rowId
-})
-
-const DeleteColumnButton = ({ dispatch, columnId, rowId }) => {
+export const DeleteColumnButton = ({ dispatch, columnId, rowId }) => {
   return (
     <div className="row">
       <div className="col">

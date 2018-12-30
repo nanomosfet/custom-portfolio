@@ -1,5 +1,5 @@
 /* eslint no-magic-numbers: "off"*/
-import { mapStateToProps } from '../containers/column.js'
+import { mapStateToProps } from '../section-columns'
 
 jest.mock('react-redux', () => ({
   connect: jest.fn().mockReturnValue(jest.fn())
@@ -8,21 +8,22 @@ jest.mock('react-redux', () => ({
 it('mounts', () => {
   const result = mapStateToProps(
     {
-      cols: {
+      rows: {
         byId: {
           1: {
-            stuff: 'stuff'
+            cols: [1, 2, 3]
           }
         }
       }
     },
     {
-      columnId: 1,
-      rowId: 2
+      page: 1,
+      row: 1
     })
 
   expect(result).toEqual({
-    column: { stuff: 'stuff' },
-    rowId: 2
+    columns: [1, 2, 3],
+    page: 1,
+    row: 1
   })
 })

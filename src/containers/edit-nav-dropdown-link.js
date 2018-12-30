@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 import { editPage, deletePage } from './../actions'
 
-const EditNavDropdownLink = ({ pageId, pathTo, activeOnlyWhenExact, label, dispatch, isHome }) => (
+export const EditNavDropdownLink = ({ pageId, pathTo, activeOnlyWhenExact, label, dispatch, isHome }) => (
   <Route
     path={pathTo}
     exact={activeOnlyWhenExact}

@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { editItemText } from './../actions'
 import Textarea from 'react-textarea-autosize'
 
-const EditableHeaderItem = ({ dispatch, item }) => {
+export const EditableHeaderItem = ({ dispatch, item }) => {
   return (
     <div>
       <Textarea

@@ -82,3 +82,29 @@ export const addItemImage = (itemId, image) => ({
   itemId,
   image
 })
+
+export const receiveContent = (content) => ({
+  type: 'RECEIVE_CONTENT',
+  content
+})
+
+export const updateItemSource = (itemId, newSource) => {
+  return {
+    type: 'UPDATE_ITEM_SOURCE',
+    itemId: itemId,
+    source: newSource
+  }
+}
+
+export const fileSaved = (itemId) => {
+  return {
+    type: 'FILE_SAVED',
+    itemId: itemId
+  }
+}
+
+export const deleteColumn = (colId, rowId) => ({
+  type: 'DELETE_COLUMN',
+  colId,
+  rowId
+})

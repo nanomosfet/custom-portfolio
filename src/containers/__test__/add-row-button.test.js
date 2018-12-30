@@ -1,7 +1,7 @@
 /* eslint no-magic-numbers: "off"*/
 import React from 'react'
 import { shallow } from 'enzyme'
-import { AddRowButton } from '../containers/add-row-button.js'
+import { AddRowButton } from '../add-row-button.js'
 
 it('mounts', () => {
   const dispatch = jest.fn()

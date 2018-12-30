@@ -1,18 +1,6 @@
 import convertToNormal from './../../helpers/convert-to-normal'
-const updateItemSource = (itemId, newSource) => {
-  return {
-    type: 'UPDATE_ITEM_SOURCE',
-    itemId: itemId,
-    source: newSource
-  }
-}
-
-const fileSaved = (itemId) => {
-  return {
-    type: 'FILE_SAVED',
-    itemId: itemId
-  }
-}
+import convertToEdit from '../../helpers/convert-to-edit'
+import { receiveContent, updateItemSource, fileSaved } from '../../actions'
 
 const saveFiles = (files) => {
   return (dispatch) => {
@@ -58,5 +46,13 @@ export const savePortfolio = () => {
       dispatch(saveState())
     })
 
+  }
+}
+
+export const requestContent = () => {
+  return (dispatch) => {
+    return fetch('/api/latest/')
+      .then((res) => res.json())
+      .then((res) => dispatch(receiveContent(convertToEdit(res))))
   }
 }

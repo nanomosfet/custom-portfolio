@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { deleteRow } from './../actions'
 
-const DeleteRowButton = ({ dispatch, page, row }) => {
+export const DeleteRowButton = ({ dispatch, page, row }) => {
   return (
     <button
       type="button"
