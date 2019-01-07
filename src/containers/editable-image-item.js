@@ -14,7 +14,8 @@ export const EditableImageItem = ({ dispatch, item }) => {
           height: '300px',
           backgroundImage: `url('${item.source}')`
         }}>
-        <label className={item.isAdded ? 'p bg-success image-upload image-added' : 'p bg-success image-upload'} >Add image
+        <label className={item.isAdded ? 'p bg-success image-upload image-added' : 'p bg-success image-upload'} >
+          {item.isAdded ? 'Replace image' : 'Add image'}
           <input type="file" className="image-upload"
             onChange={(event) => dispatch(addItemImage(item.id, event.target.files[0]))}
           />
