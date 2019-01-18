@@ -5,7 +5,7 @@
 
 Node version : 8
 
-Provides a way for someone to update their portfolio page. Pretty much like squarespace or adobe portfolio.
+Provides a way for someone to update their portfolio page.
 
 ## Development
 
